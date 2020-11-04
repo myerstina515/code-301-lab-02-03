@@ -12,7 +12,7 @@ function Horns(animal) {
 }
 
 Horns.prototype.render = function () {
-  let $animalClone = $('<section></section>')
+  let $animalClone = $(`<section class="${this.keyword}"></section>`);
   $animalClone.html($('.photo-template').html());
   $('main').append($animalClone);
   $animalClone.find('h2').text(this.title);
@@ -39,23 +39,26 @@ Horns.readJSON = () => {
 $(() => Horns.readJSON());
 
 // feature 2
-$('select').on('change', function(){
-  let keywordSelect=$(this).find(':selected').attr('value');
-})
 // We need a dynamically updating dropdown menu (jQuery function)
 function dropdownKeywordPopulation(array) {
   let dropdownArray = [];
   array.forEach((value, i) => {
-    if(i === array.indexOf(value)){
+    if (i === array.indexOf(value)) {
+      // value = value.charAt(0).toUpperCase() + value.slice(1)
       dropdownArray.push(value);
     }
   })
-  dropdownArray.forEach((value, i) => {
+  dropdownArray.forEach((value) => {
     $('select').append(`<option value=${value}>${value}</option>`);
   })
 }
 
-
+$('select').on('change', function () {
+  let keywordSelect = $(this).find(':selected').attr('value');
+  console.log(keywordSelect);
+  $('section').hide();
+  $(`.${keywordSelect}`).show();
+})
 
 // It needs to populate with all the different keyword values in the json file.
 
