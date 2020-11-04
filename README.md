@@ -20,18 +20,18 @@ Start time: 1515
 
 Finish time: 1815
 
-Start time day 2:
+Start time day 2: 1505
 
-Finish time day 2:
+Finish time day 2: 1535
 
-Actual time needed to complete: _____
+Actual time needed to complete: 3.5 hours
 
 Number and name of feature: Feature #3: App Styling
 
 Estimate of time needed to complete: .5 hours
 
-Start time: _____
+Start time: 1535
 
-Finish time: _____
+Finish time: 1550
 
-Actual time needed to complete: _____
+Actual time needed to complete: .25 hours
