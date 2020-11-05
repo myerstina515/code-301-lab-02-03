@@ -1,5 +1,6 @@
 'use strict';
 
+var pageSelect = 'page-1.json';
 var keywordArray = [];
 
 function Horns(animal) {
@@ -25,8 +26,9 @@ Horns.prototype.render = function () {
 }
 
 Horns.readJSON = () => {
+  // console.log('test');
   const ajaxSettings = { method: 'get', dataType: 'json' }
-  $.ajax('page-1.json', ajaxSettings)
+  $.ajax(`${pageSelect}`, ajaxSettings)
     .then(hornsDB => {
       hornsDB.forEach(item => {
         let hornedAnimal = new Horns(item);
@@ -58,6 +60,35 @@ $('select').on('change', function () {
   console.log(keywordSelect);
   $('section').hide();
   $(`.${keywordSelect}`).show();
+})
+
+
+// $('.buttonTwo').on('click', function) {
+//   $('section').hide();
+//   Horns.readJSON();
+//   $('')
+// }
+
+
+
+
+
+
+
+
+
+$('#pageList').click( function (event) {
+  // console.log(event.target.id);
+  $('section').hide()
+
+  pageSelect = event.target.id;
+  console.log(pageSelect);
+  Horns.readJSON()
+    .then(() => {
+      $('section').show()
+    });
+
+  console.log();
 })
 
 // It needs to populate with all the different keyword values in the json file.
