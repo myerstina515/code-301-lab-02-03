@@ -24,18 +24,27 @@
       <option value="default">Filter by Keyword</option>
     </select>
   </header>
-  <main>
-    <template class="photo-template">
+  <main class="container">
+    <!-- <template class="photo-template">
       <h2></h2>
       <img src="" alt="">
       <p></p>
       <h5></h5>
+    </template> -->
+    <template class="photo-template">
+      <h2>Title: {{title}}</h2>
+      <img src="{{image_url}}" alt="{{keyword}}">
+      <p>Description: {{description}}</p>
+      <h5>Number of Horns: {{horns}}</h5>
     </template>
   </main>
   <footer>
     &copy; 2018 Code Fellows
   </footer>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.0.1/mustache.min.js"/>
+  <script src="page-1.json"/>
+  <script src="page-2.json"/>
   <script src="js/app.js"></script>
 </body>
 

@@ -2,6 +2,7 @@
 
 var pageSelect = 'page-1.json';
 var keywordArray = [];
+var convertedObjectHoldingArray = [];
 
 function Horns(animal) {
   this.image_url = animal.image_url;
@@ -10,29 +11,42 @@ function Horns(animal) {
   this.keyword = animal.keyword;
   this.horns = animal.horns;
   keywordArray.push(this.keyword);
+  convertedObjectHoldingArray.push(this);
+}
+Horns.prototype.toHTML = function() {
+  let template = $('#photo-template').html();
+  let html = Mustache.render(template, this);
+  return html;
 }
 
-Horns.prototype.render = function () {
-  let $animalClone = $(`<section class="${this.keyword}"></section>`);
-  $animalClone.html($('.photo-template').html());
-  $('main').append($animalClone);
-  $animalClone.find('h2').text(this.title);
-  $animalClone.find('img').attr('src', this.image_url);
-  $animalClone.find('p').text(this.description);
-  $animalClone.find('img').attr('alt', this.keyword);
-  $animalClone.find('h5').text(`Number of horns: ${this.horns}`);
 
-  $animalClone.removeClass('photo-template');
-}
+
+// Horns.prototype.render = function () {
+//   let $animalClone = $(`<section class="${this.keyword}"></section>`);
+//   $animalClone.html($('.photo-template').html());
+//   $('main').append($animalClone);
+//   $animalClone.find('h2').text(this.title);
+//   $animalClone.find('img').attr('src', this.image_url);
+//   $animalClone.find('p').text(this.description);
+//   $animalClone.find('img').attr('alt', this.keyword);
+//   $animalClone.find('h5').text(`${this.horns}`);
+
+//   $animalClone.removeClass('photo-template');
+// }
 
 Horns.readJSON = () => {
-  // console.log('test');
+  // console.log('test')
   const ajaxSettings = { method: 'get', dataType: 'json' }
   $.ajax(`${pageSelect}`, ajaxSettings)
     .then(hornsDB => {
       hornsDB.forEach(item => {
-        let hornedAnimal = new Horns(item);
-        hornedAnimal.render();
+        // let hornedAnimal = new Horns(item);
+        new Horns(item);
+        // hornedAnimal.render();
+        // hornedAnimal.toHTML();
+      })
+      convertedObjectHoldingArray.forEach(object => {
+        $('.container').append(object.toHTML());
       })
       dropdownKeywordPopulation(keywordArray);
     })
@@ -46,7 +60,6 @@ function dropdownKeywordPopulation(array) {
   let dropdownArray = [];
   array.forEach((value, i) => {
     if (i === array.indexOf(value)) {
-      // value = value.charAt(0).toUpperCase() + value.slice(1)
       dropdownArray.push(value);
     }
   })
@@ -57,41 +70,17 @@ function dropdownKeywordPopulation(array) {
 
 $('select').on('change', function () {
   let keywordSelect = $(this).find(':selected').attr('value');
-  console.log(keywordSelect);
   $('section').hide();
   $(`.${keywordSelect}`).show();
 })
 
 
-// $('.buttonTwo').on('click', function) {
-//   $('section').hide();
-//   Horns.readJSON();
-//   $('')
-// }
-
-
-
-
-
-
-
-
-
 $('#pageList').click( function (event) {
-  // console.log(event.target.id);
   $('section').hide()
-
   pageSelect = event.target.id;
-  console.log(pageSelect);
   Horns.readJSON()
     .then(() => {
       $('section').show()
     });
-
-  console.log();
 })
 
-// It needs to populate with all the different keyword values in the json file.
-
-
-// When the user selects one of the keyword values, the javascript will call all objects in the database that match. Everything will be hidden, then only show selected keyword value
