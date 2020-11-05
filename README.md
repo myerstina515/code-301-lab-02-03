@@ -50,11 +50,15 @@ Number and name of feature: Lab 3 Feature 2:
 
 Estimate of time needed to complete: 1 hour
 
-Start time: _____
+Start time: 1735
 
-Finish time: _____
+Finish time: 1820
 
-Actual time needed to complete: _____
+Start time again:
+
+Finish time again:
+
+Actual time needed to complete: :55 + ___
 
 Number and name of feature: Lab 3 Feature 3:
 
