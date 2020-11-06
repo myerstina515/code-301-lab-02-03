@@ -54,11 +54,11 @@ Start time: 1735
 
 Finish time: 1820
 
-Start time again:
+Start time again: 1435
 
-Finish time again:
+Finish time again: 1615
 
-Actual time needed to complete: :55 + ___
+Actual time needed to complete: :55 + 1:40 = 2:35
 
 Number and name of feature: Lab 3 Feature 3:
 
