@@ -10,10 +10,10 @@
   <link href="css/module.css" type="text/css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
   <script id="photo-template" type="text/x-tmpl-mustache">
-    <div>
-      <h2>Title: {{title}}</h2>
+    <div id="{{title}}" class="{{keyword}}">
+      <h2>{{title}}</h2>
       <img src="{{image_url}}" alt="{{keyword}}"/>
-      <p>Description: {{description}}</p>
+      <p>{{description}}</p>
       <h5>Number of Horns: {{horns}}</h5>
     </div>
   </script>
@@ -23,6 +23,14 @@
 <body>
   <header>
     <h1>The Gallery of Horns</h1>
+
+    <form>
+      <fieldset class="sortSelector">
+        <input id="nameButton" type="radio" value="0">Sort By Name</input>
+        <input id="hornButton" type="radio" value="1">Sort By # Horns</input>
+      </fieldset>
+    </form>
+
     <nav>
       <ul id="pageList">
         <li><button id="page-1.json">Page 1</button></li>
@@ -34,7 +42,7 @@
     </select>
   </header>
   <main class="container">
-     <!-- <template class="photo-template">
+    <!-- <template class="photo-template">
       <h2></h2>
       <img src="" alt="">
       <p></p>
