@@ -1,0 +1,24 @@
+{
+  "name": "code-301-lab-02-03",
+  "version": "1.0.0",
+  "description": "## Feature Time Estimates",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/myerstina515/code-301-lab-02-03.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/myerstina515/code-301-lab-02-03/issues"
+  },
+  "homepage": "https://github.com/myerstina515/code-301-lab-02-03#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
